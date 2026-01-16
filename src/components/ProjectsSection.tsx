@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Rocket, Code, HelpCircle, FileText, Gamepad2, Clock, Edit3, Database } from "lucide-react";
+import { Rocket, Code, HelpCircle, FileText, Gamepad2, Clock, Edit3, Skull } from "lucide-react";
 import ProjectCard from "./ProjectCard";
 
 const projects = [
@@ -24,10 +24,10 @@ const projects = [
     icon: <Edit3 className="w-6 h-6 text-primary" />,
   },
   {
-    title: "Base44 Bin",
-    description: "The main site for bin.base44 - A powerful platform for all your development needs.",
+    title: "ExploitZ3r0",
+    description: "The ultimate hacking playground. Explore, learn, and master the art of security.",
     url: "https://bin.base44.app/",
-    icon: <Database className="w-6 h-6 text-primary" />,
+    icon: <Skull className="w-6 h-6 text-primary" />,
   },
   {
     title: "Mystery Project",
@@ -61,8 +61,22 @@ const ProjectsSection = () => {
 
   return (
     <section ref={ref} className="relative py-40 overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/5 blur-[120px]" />
+      {/* Animated background elements */}
+      <motion.div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/5 blur-[120px]"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div 
+        className="absolute top-20 right-20 w-32 h-32 rounded-full bg-primary/10 blur-2xl"
+        animate={{ y: [0, -30, 0], x: [0, 20, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div 
+        className="absolute bottom-20 left-20 w-40 h-40 rounded-full bg-primary/10 blur-2xl"
+        animate={{ y: [0, 30, 0], x: [0, -20, 0] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      />
       
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -71,9 +85,13 @@ const ProjectsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-24"
         >
-          <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+          <motion.span 
+            className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6"
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
             Portfolio
-          </span>
+          </motion.span>
           <h2 className="text-4xl md:text-6xl font-bold mb-8">
             Explore the <span className="text-gradient">collection</span>
           </h2>
