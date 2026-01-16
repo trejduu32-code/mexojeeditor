@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Rocket, Code, HelpCircle, FileText, Gamepad2, Clock } from "lucide-react";
+import { Rocket, Code, HelpCircle, FileText, Gamepad2, Clock, Edit3, Database } from "lucide-react";
 import ProjectCard from "./ProjectCard";
 
 const projects = [
@@ -16,6 +16,18 @@ const projects = [
     description: "Clean and simple code editor for quick edits and experiments. Perfect for beginners.",
     url: "https://me.xo.je/",
     icon: <Code className="w-6 h-6 text-primary" />,
+  },
+  {
+    title: "Simple Code Editor",
+    description: "Lightweight and minimal code editor. Perfect for quick snippets and learning to code.",
+    url: "https://me.xo.je/codeeditor.html",
+    icon: <Edit3 className="w-6 h-6 text-primary" />,
+  },
+  {
+    title: "Base44 Bin",
+    description: "The main site for bin.base44 - A powerful platform for all your development needs.",
+    url: "https://bin.base44.app/",
+    icon: <Database className="w-6 h-6 text-primary" />,
   },
   {
     title: "Mystery Project",
@@ -48,31 +60,34 @@ const ProjectsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-32 overflow-hidden">
+    <section ref={ref} className="relative py-40 overflow-hidden">
       {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[100px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/5 blur-[120px]" />
       
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-24"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Explore the <span className="text-gradient">Portfolio</span>
+          <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+            Portfolio
+          </span>
+          <h2 className="text-4xl md:text-6xl font-bold mb-8">
+            Explore the <span className="text-gradient">collection</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-xl mx-auto">
-            A collection of projects built with passion and creativity.
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            A curated selection of projects built with passion, creativity, and lots of coffee.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {projects.map((project, index) => (
             <ProjectCard
               key={project.title}
               {...project}
-              delay={index * 0.1}
+              delay={index * 0.08}
             />
           ))}
         </div>
